@@ -1,0 +1,19 @@
+/* ProductCard.css - For react-image-gallery overrides if needed */
+
+/* Ensure gallery fits within its container on the card */
+.product-image-gallery-container .image-gallery-slide-wrapper,
+.product-image-gallery-container .image-gallery-image {
+  max-height: 100%; /* or a fixed height like 150px / 180px */
+  object-fit: cover;
+}
+
+.product-image-gallery-container .image-gallery-thumbnails-wrapper {
+  height: 60px; /* Adjust thumbnail strip height */
+}
+
+/* Modal gallery might need different sizing */
+.modal-image-gallery-container .image-gallery-slide-wrapper,
+.modal-image-gallery-container .image-gallery-image {
+  max-height: 350px; /* Adjust as needed for modal view */
+  object-fit: contain; /* Use contain to see full image in modal */
+}

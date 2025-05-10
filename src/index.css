@@ -1,13 +1,148 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto+Mono:wght@400;500;700&display=swap');
+:root {
+  /* Color Palette */
+  --color-neon-green: #39FF14;
+  --color-black: #000000;
+  --color-deep-purple: #301934;
+
+
+  /* Text Colors */
+  --text-dark-grey: #333333;
+  --text-light-grey: #E0E0E0;
+
+  /* Semantic Text Colors */
+  --text-body: var(--text-light-grey);
+  --text-body-on-light: var(--text-dark-grey);
+  --text-muted: #A0A0A0;
+  --text-heading: var(--text-light-grey);
+  --text-accent-color: var(--color-neon-green);
+  --text-link: var(--color-neon-green);
+  --text-link-hover: #8EFF70;
+
+  /* Font Families */
+  --font-primary: 'Orbitron', sans-serif;
+  --font-secondary: 'Roboto Mono', monospace;
+
+  /* Text Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-display: 3rem;
+
+  /* Gradients */
+  --gradient-neon-purple: linear-gradient(45deg, var(--color-neon-green), var(--color-deep-purple));
+  --gradient-purple-black: linear-gradient(45deg, var(--color-deep-purple), var(--color-black));
+  --gradient-neon-black: linear-gradient(45deg, var(--color-neon-green), var(--color-black));
+
+  /* Highlights & Accents */
+  --highlight-main: var(--color-neon-green);
+  --accent-primary: var(--color-deep-purple);
+  --accent-secondary: var(--color-neon-green);
 }
 
+/* Global Resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  font-family: var(--font-primary);
+  background-color: var(--color-black); /* Ensure HTML root also has this background */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Responsive images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form elements for consistency */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  /* Hide scrollbar for Chrome, Safari and Opera - already on html, but good for specificity if needed */
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  background-color: var(--color-black);
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: var(--font-secondary);
+  background-color: rgba(48, 25, 52, 0.5);
+  color: var(--text-accent-color);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Dev Doc Logo Styling */
+.dev-doc-logo-link {
+  position: relative; /* Needed for the ::before pseudo-element positioning */
+  margin-top: 15px; /* Push the logo down more */
+  padding-top: 1.6em; /* Adjust space for the "Developed By:" text */
+}
+
+.dev-doc-logo-link img { /* Target the Image component inside the link */
+  opacity: 0.6;
+  filter: drop-shadow(2px 2px 3px rgba(57, 255, 20, 0.2)); /* Subtle neon green shadow */
+  animation: shakeLogo 15s infinite;
+}
+
+.dev-doc-logo-link::before {
+  content: "Developed By:";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-family: var(--font-secondary);
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Specific adjustment for mobile drawer if needed, e.g., text size */
+.dev-doc-logo-link.mobile::before {
+  font-size: calc(var(--font-size-xs) * 0.9); /* Slightly smaller on mobile if desired */
+}
+
+@keyframes shakeLogo {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  1%, 3%, 5% { transform: translateX(-1px) rotate(-0.5deg); }
+  2%, 4% { transform: translateX(1px) rotate(0.5deg); }
+  /* Shakes for about 0.75s (5% of 15s) */
+  6%, 99% { transform: translateX(0) rotate(0); } /* Rest period */
 }
